@@ -54,10 +54,9 @@ static ssize_t mpu6050_min_read(struct file *f, char __user *ubuf, size_t len, l
 static const struct file_operations mpu6050_min_fops = {
     .owner = THIS_MODULE,
     .read  = mpu6050_min_read,
-    .llseek = no_llseek,
 };
 
-static int mpu6050_min_probe(struct i2c_client *client, const struct i2c_device_id *id)
+static int mpu6050_min_probe(struct i2c_client *client)
 {
     struct mpu6050_min *chip;
     int who, ret;

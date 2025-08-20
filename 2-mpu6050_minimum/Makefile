@@ -8,5 +8,7 @@ SRC    = $(RESULT).c
 
 all:
 	$(MAKE) -C $(KDIR) M=$(PWD) modules
+	$(CC) -o $(RESULT) $(SRC)
 clean:
 	$(MAKE) -C $(KDIR) M=$(PWD) clean
+	rm -f $(RESULT)
