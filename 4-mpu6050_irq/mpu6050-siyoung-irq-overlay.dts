@@ -1,0 +1,20 @@
+/dts-v1/;
+/plugin/;
+/ {
+    compatible = "brcm,bcm2708","brcm,bcm2711";
+    fragment@0 {
+        target = <&i2c1>;
+        __overlay__ {
+            #address-cells = <1>;
+            #size-cells = <0>;
+            status = "okay";
+            mpu6050: mpu6050@68 {
+                compatible = "siyoung,mpu6050_irq";
+                reg = <0x68>;
+                interrupt-parent = <&gpio>;
+                /* 17번 핀, rising edge (보드에 따라 high-level(4)로 바꾸면 더 안정적일 때도 있음) */
+                interrupts = <17 1>;
+            };
+        };
+    };
+};
